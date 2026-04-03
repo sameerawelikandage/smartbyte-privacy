@@ -2,292 +2,423 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SmartByte — Privacy Policy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --blue:   #1d4ed8;
-      --blue2:  #3b82f6;
-      --ink:    #0f172a;
-      --muted:  #64748b;
-      --soft:   #f1f5f9;
-      --border: #e2e8f0;
-      --white:  #ffffff;
+      --blue:    #3b82f6;
+      --purple:  #7c3aed;
+      --cyan:    #06b6d4;
+      --dark:    #040812;
+      --card:    rgba(15, 20, 45, 0.85);
+      --border:  rgba(99, 130, 255, 0.18);
+      --text:    #e2e8f0;
+      --muted:   #94a3b8;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--soft);
-      color: var(--ink);
-      min-height: 100vh;
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      overflow-x: hidden;
     }
 
-    /* ── HEADER ── */
-    header {
-      background: linear-gradient(135deg, #1a3fad 0%, #1d4ed8 50%, #3b82f6 100%);
-      padding: 48px 24px 40px;
-      text-align: center;
+    /* ── Grid pattern background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Nebula blobs ── */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 { width: 480px; height: 480px; top: -120px; right: -100px; background: radial-gradient(circle, rgba(124,58,237,0.22), transparent 70%); }
+    .blob-2 { width: 400px; height: 400px; bottom: 80px;  left:  -80px; background: radial-gradient(circle, rgba(59,130,246,0.18), transparent 70%); }
+    .blob-3 { width: 300px; height: 300px; top: 40%;  right: 10%;  background: radial-gradient(circle, rgba(6,182,212,0.12),   transparent 70%); }
+
+    /* ── Wrapper ── */
+    .wrap {
       position: relative;
-      overflow: hidden;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
     }
-    header::before {
-      content: '';
-      position: absolute;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      top: -80px; right: -60px;
+
+    /* ── Header ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 56px;
+      animation: fadeUp 0.8s ease both;
     }
-    header::after {
-      content: '';
-      position: absolute;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-      bottom: -60px; left: -40px;
-    }
-    .app-icon {
-      width: 72px; height: 72px;
-      background: #fff;
-      border-radius: 18px;
+
+    .logo-wrap {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
-      margin-bottom: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      position: relative; z-index: 1;
-    }
-    header h1 {
-      font-size: 28px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.5px;
-      position: relative; z-index: 1;
-    }
-    header p {
-      margin-top: 8px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.75);
-      font-weight: 600;
-      position: relative; z-index: 1;
-    }
-
-    /* ── WAVE ── */
-    .wave {
-      display: block;
-      background: var(--soft);
-      height: 32px;
-      margin-top: -2px;
-    }
-
-    /* ── CONTAINER ── */
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 8px 20px 60px;
-    }
-
-    /* ── LAST UPDATED PILL ── */
-    .updated-pill {
-      display: inline-block;
-      background: #dbeafe;
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 20px;
+      width: 90px; height: 90px;
+      border-radius: 22px;
+      background: rgba(10,20,50,0.9);
+      border: 1.5px solid rgba(99,160,255,0.4);
+      box-shadow: 0 0 40px rgba(59,130,246,0.3);
       margin-bottom: 24px;
-      letter-spacing: 0.3px;
+      overflow: hidden;
     }
 
-    /* ── SECTION CARDS ── */
-    .section {
-      background: var(--white);
+    .logo-wrap img {
+      width: 80px; height: 80px;
       border-radius: 16px;
-      border: 1.5px solid var(--border);
-      padding: 24px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      object-fit: cover;
     }
-    .section-head {
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(24px, 5vw, 34px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .version-badge {
+      display: inline-block;
+      margin-top: 14px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(124,58,237,0.2));
+      border: 1px solid rgba(99,130,255,0.3);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 12px;
+      color: #93c5fd;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Neon divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(99,130,255,0.5), rgba(124,58,237,0.5), transparent);
+      margin: 40px 0;
+    }
+
+    /* ── Section cards ── */
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 30px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.6s ease both;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .section:hover {
+      border-color: rgba(99,130,255,0.35);
+      box-shadow: 0 0 30px rgba(59,130,246,0.08);
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--blue), var(--purple));
+      border-radius: 3px 0 0 3px;
+    }
+
+    .section-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
-    .section-icon {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 19px;
+
+    .icon {
+      font-size: 22px;
       flex-shrink: 0;
     }
-    .section h2 {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--ink);
-    }
-    .section p, .section li {
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
       font-size: 14px;
-      color: #334155;
-      line-height: 1.75;
+      font-weight: 700;
+      color: #93c5fd;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
-    .section ul {
+
+    p { color: var(--text); margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
       list-style: none;
+      padding-left: 0;
       margin-top: 8px;
     }
-    .section ul li {
-      padding: 3px 0 3px 20px;
+
+    ul li {
+      padding: 5px 0 5px 20px;
       position: relative;
+      color: var(--text);
     }
-    .section ul li::before {
-      content: '·';
+
+    ul li::before {
+      content: '›';
       position: absolute;
-      left: 6px;
-      color: var(--blue2);
-      font-weight: 900;
-      font-size: 18px;
-      line-height: 1.3;
-    }
-    a {
+      left: 0;
       color: var(--blue);
-      text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
-    a:hover { text-decoration: underline; }
 
-    /* ── COLOR ACCENTS per section ── */
-    .ic-blue   { background: #dbeafe; }
-    .ic-green  { background: #dcfce7; }
-    .ic-orange { background: #fff7ed; }
-    .ic-purple { background: #ede9fe; }
-    .ic-red    { background: #fee2e2; }
-    .ic-amber  { background: #fef9c3; }
-    .ic-teal   { background: #ccfbf1; }
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(96,165,250,0.3);
+      transition: color 0.2s, border-color 0.2s;
+    }
 
-    /* ── FOOTER ── */
+    a:hover { color: #a78bfa; border-color: rgba(167,139,250,0.5); }
+
+    /* ── Warning badge ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(6,182,212,0.12);
+      border: 1px solid rgba(6,182,212,0.3);
+      border-radius: 8px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #67e8f9;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(124,58,237,0.1));
+      border: 1px solid rgba(99,130,255,0.25);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 32px;
+    }
+
+    .contact-card .email {
+      font-size: 16px;
+      font-weight: 600;
+      color: #60a5fa;
+      display: block;
+      margin-top: 8px;
+    }
+
+    /* ── Footer ── */
     footer {
       text-align: center;
-      padding: 32px 20px;
-      font-size: 12px;
+      margin-top: 48px;
       color: var(--muted);
-      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.5px;
     }
-    footer strong { color: var(--ink); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section:nth-child(1)  { animation-delay: 0.05s; }
+    .section:nth-child(2)  { animation-delay: 0.10s; }
+    .section:nth-child(3)  { animation-delay: 0.15s; }
+    .section:nth-child(4)  { animation-delay: 0.20s; }
+    .section:nth-child(5)  { animation-delay: 0.25s; }
+    .section:nth-child(6)  { animation-delay: 0.30s; }
+    .section:nth-child(7)  { animation-delay: 0.35s; }
+    .section:nth-child(8)  { animation-delay: 0.40s; }
+    .section:nth-child(9)  { animation-delay: 0.45s; }
+    .section:nth-child(10) { animation-delay: 0.50s; }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="app-icon">📚</div>
-  <h1>SmartByte — Privacy Policy</h1>
-  <p>Learn Computer Basics · Offline</p>
-</header>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
 
-<svg class="wave" viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0,32 C360,0 1080,32 1440,16 L1440,32 Z" fill="#f1f5f9"/>
-</svg>
+<div class="wrap">
 
-<div class="container">
-  <div class="updated-pill">Last updated: March 2026</div>
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="logo-wrap">
+      <img src="https://sameerawelikandage.github.io/smartbyte-privacy/logo.png"
+           onerror="this.style.display='none'; this.parentElement.innerHTML='📚';"
+           alt="SmartByte Logo" />
+    </div>
+    <h1>SmartByte</h1>
+    <p class="hero-sub">Privacy Policy · Learn Computer Basics Offline</p>
+    <span class="version-badge">Version 1.0.2 &nbsp;·&nbsp; Last updated: April 2026</span>
+  </div>
 
-  <!-- Data Collection -->
+  <div class="divider"></div>
+
+  <!-- 1. Data Collection -->
   <div class="section">
-    <div class="section-head">
-      <div class="section-icon ic-blue">🗄️</div>
+    <div class="section-header">
+      <span class="icon">🗄️</span>
       <h2>Data Collection</h2>
     </div>
-    <p>SmartByte stores your reading progress, quiz scores, and profile information <strong>locally on your device</strong>. The only data sent to the cloud is your leaderboard name, country flag, and XP score — used solely to display the global leaderboard. No other personal data is collected or shared.</p>
+    <p>SmartByte stores your reading progress, quiz scores, XP points, badges, and profile information locally on your device using AsyncStorage.</p>
+    <p>The only data sent to the cloud is your <strong>leaderboard display name, country flag, profile image, and XP score</strong> — used solely to display the Global Leaderboard feature. No other personal data is collected or shared with third parties.</p>
   </div>
 
-  <!-- Profile Image -->
+  <!-- 2. Profile Image -->
   <div class="section">
-    <div class="section-head">
-      <div class="section-icon ic-teal">🖼️</div>
+    <div class="section-header">
+      <span class="icon">🖼️</span>
       <h2>Profile Image</h2>
     </div>
-    <p>Your profile picture is stored <strong>locally on your device only</strong> and is never uploaded to any server.</p>
+    <p>When you set a profile picture and join the Global Leaderboard, your profile image is <strong>uploaded to Firebase Cloud Storage</strong> (Google LLC) to display alongside your leaderboard entry.</p>
+    <p>If you do not join the leaderboard, your profile picture remains stored locally on your device only and is never uploaded to any server.</p>
   </div>
 
-  <!-- Firebase -->
+  <!-- 3. Firebase -->
   <div class="section">
-    <div class="section-head">
-      <div class="section-icon ic-orange">🔥</div>
+    <div class="section-header">
+      <span class="icon">🔥</span>
       <h2>Firebase (Google)</h2>
     </div>
-    <p>SmartByte uses <strong>Firebase</strong>, a service provided by Google LLC, for the global leaderboard feature. Firebase may collect anonymous usage data and device identifiers. Learn more:</p>
+    <p>SmartByte uses Firebase, a service provided by Google LLC, for the following features:</p>
+    <ul>
+      <li><strong>Firestore</strong> — stores global leaderboard entries (name, flag, XP, profile image URL)</li>
+      <li><strong>Firebase Cloud Storage</strong> — stores profile images for leaderboard participants</li>
+      <li><strong>Firebase Analytics</strong> — anonymous usage analytics to improve the app</li>
+    </ul>
+    <p style="margin-top:12px;">Firebase may collect anonymous usage data and device identifiers as described in Google's privacy policies.</p>
     <ul>
       <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
       <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy Information</a></li>
     </ul>
   </div>
 
-  <!-- AdMob -->
+  <!-- 4. AdMob -->
   <div class="section">
-    <div class="section-head">
-      <div class="section-icon ic-amber">📢</div>
+    <div class="section-header">
+      <span class="icon">📢</span>
       <h2>Advertising — Google AdMob</h2>
     </div>
-    <p>SmartByte displays ads provided by <strong>Google AdMob</strong>. AdMob may use your device's advertising ID to show relevant ads. You can opt out of personalised ads in your device <strong>Settings → Google → Ads</strong>.</p>
+    <p>SmartByte displays advertisements provided by <strong>Google AdMob</strong>. AdMob may use your device's advertising ID to show relevant ads and measure ad performance.</p>
+    <p>You can opt out of personalised ads at any time: <strong>Settings → Google → Ads → Opt out of Ads Personalisation</strong>.</p>
     <ul>
       <li><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob Privacy Policy</a></li>
       <li><a href="https://policies.google.com/technologies/ads" target="_blank">Google Advertising Policies</a></li>
     </ul>
   </div>
 
-  <!-- Permissions -->
+  <!-- 5. Affiliate Links -->
   <div class="section">
-    <div class="section-head">
-      <div class="section-icon ic-purple">🔑</div>
-      <h2>Permissions</h2>
+    <div class="section-header">
+      <span class="icon">🛒</span>
+      <h2>Affiliate Links</h2>
     </div>
+    <div class="badge">Important</div>
+    <p>SmartByte participates in affiliate advertising programmes including the <strong>Amazon Associates Programme</strong> and may participate in similar programmes (such as Daraz Affiliate) in the future.</p>
+    <p>When you tap a "Shop Related Products" link within the app, you may be directed to third-party shopping websites. If you make a purchase through these links, SmartByte may earn a small commission at <strong>no extra cost to you</strong>.</p>
+    <p>These affiliate links do not affect the content or objectivity of our articles.</p>
+  </div>
+
+  <!-- 6. Wikipedia / External Links -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">🔗</span>
+      <h2>External Links — Wikipedia &amp; Deep Learn</h2>
+    </div>
+    <div class="badge">Pro Feature</div>
+    <p>SmartByte Pro subscribers can access <strong>Deep Learn</strong> links within articles. These links open external websites, primarily <strong>Wikipedia</strong> and educational resources, in your device's browser.</p>
+    <p>SmartByte is not responsible for the content, privacy practices, or terms of service of any external websites. We recommend reviewing the privacy policy of any external site you visit.</p>
     <ul>
-      <li><strong>Camera Roll</strong> — only when you choose to set a profile picture</li>
-      <li><strong>Notifications</strong> — only for optional daily learning reminders</li>
-      <li>No other permissions are requested</li>
+      <li><a href="https://en.wikipedia.org/wiki/Wikipedia:Privacy_policy" target="_blank">Wikipedia Privacy Policy</a></li>
     </ul>
   </div>
 
-  <!-- Children -->
+  <!-- 7. Permissions -->
   <div class="section">
-    <div class="section-head">
-      <div class="section-icon ic-green">👶</div>
-      <h2>Children's Privacy</h2>
+    <div class="section-header">
+      <span class="icon">🔑</span>
+      <h2>Permissions</h2>
     </div>
-    <p>SmartByte is intended for users aged <strong>13 and above</strong>. We do not knowingly collect personal data from children under 13. If you believe a child has provided data, please contact us.</p>
+    <ul>
+      <li><strong>Camera Roll / Photo Library</strong> — only when you choose to set a profile picture</li>
+      <li><strong>Advertising ID (AD_ID)</strong> — used by Google AdMob to serve relevant advertisements</li>
+      <li><strong>Notifications</strong> — only for optional daily learning reminders</li>
+      <li><strong>Internet Access</strong> — required for leaderboard sync, ads, and Deep Learn links</li>
+    </ul>
+    <p style="margin-top:10px;">No other permissions are requested. All core learning features work fully offline.</p>
   </div>
 
-  <!-- Changes -->
+  <!-- 8. Children's Privacy -->
   <div class="section">
-    <div class="section-head">
-      <div class="section-icon ic-red">📋</div>
+    <div class="section-header">
+      <span class="icon">👶</span>
+      <h2>Children's Privacy</h2>
+    </div>
+    <p>SmartByte is intended for users aged <strong>13 and above</strong>. We do not knowingly collect personal data from children under 13. If you believe a child under 13 has provided personal information through our app, please contact us immediately and we will take steps to remove that information.</p>
+  </div>
+
+  <!-- 9. Changes -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">📋</span>
       <h2>Changes to This Policy</h2>
     </div>
-    <p>This policy may be updated with app updates. Continued use of the app constitutes acceptance of any changes. We encourage you to review this page periodically.</p>
+    <p>This privacy policy may be updated when the app is updated with new features. We will update the "Last updated" date at the top of this page when changes are made.</p>
+    <p>Continued use of SmartByte after any changes constitutes your acceptance of the updated policy. We encourage you to review this page periodically.</p>
   </div>
 
   <!-- Contact -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon ic-teal">✉️</div>
-      <h2>Contact</h2>
-    </div>
-    <p>For any privacy-related questions, contact the SmartByte team at:<br/>
-    <a href="mailto:smartbyte.app@gmail.com">smartbyte.app@gmail.com</a></p>
+  <div class="contact-card">
+    <span style="font-size:28px;">✉️</span>
+    <p style="margin-top:10px; color: var(--muted); font-size:13px; text-transform:uppercase; letter-spacing:1px;">Privacy Questions?</p>
+    <a class="email" href="mailto:smartbyte.app@gmail.com">smartbyte.app@gmail.com</a>
   </div>
 
+  <footer>
+    <div class="divider"></div>
+    <p>© 2026 SmartByte · All rights reserved · Version 1.0.2</p>
+    <p style="margin-top:6px;">Built with ❤️ for learners worldwide 🌍</p>
+  </footer>
+
 </div>
-
-<footer>
-  <strong>SmartByte</strong> · Version 1.0.0 · com.smartbyte.app<br/>
-  © 2026 SmartByte Team. All rights reserved.
-</footer>
-
 </body>
 </html>
